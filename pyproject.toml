@@ -1,0 +1,52 @@
+[project]
+name = "db-tunnels-gui"
+version = "0.1.0"
+description = "macOS GUI for managing autossh SSH port-forwarding tunnels"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.12"
+keywords = ["ssh", "tunnel", "autossh", "port-forwarding", "macos", "gui"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: MacOS X",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: System :: Networking",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "PyQt6>=6.7",
+]
+
+[project.urls]
+Homepage = "https://github.com/jahidmunna/db-tunnels"
+Repository = "https://github.com/jahidmunna/db-tunnels"
+Issues = "https://github.com/jahidmunna/db-tunnels/issues"
+Changelog = "https://github.com/jahidmunna/db-tunnels/blob/main/CHANGELOG.md"
+
+[project.scripts]
+db-tunnels = "db_tunnels.main:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-qt>=4.4",
+    "pytest-mock>=3.14",
+    "pyinstaller>=6.20.0",
+    "pillow>=10.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+qt_api = "pyqt6"
+pythonpath = ["src"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/db_tunnels"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
